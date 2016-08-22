@@ -1,9 +1,5 @@
-
-var mysql = require('mysql');
-var config = require('../config.js');
-var pool  = mysql.createPool(config);
-
-    var Tasks = {
+module.exports = function(pool){
+    return {
         list: function(callback) {
             pool.query('SELECT * FROM tasks', callback);
         },
@@ -17,7 +13,7 @@ var pool  = mysql.createPool(config);
         },
 
         change: function(task, callback) {
-            pool.query('UPDATE tasks SET ?', {task: task});
+            pool.query('UPDATE tasks SET ?', {task: task}, callback);
         },
 
         delete: function(id, callback) {
@@ -40,5 +36,4 @@ var pool  = mysql.createPool(config);
             pool.query('DELETE FROM tasks WHERE ?', {status: 'checked'}, callback);
         }
     };
-
-module.exports = Tasks;
+};
