@@ -62,6 +62,58 @@ app.post('/change/:id/:text', function(req, res) {
     });
 });
 
+app.post('/done', function(req, res) {
+    console.dir(tasks);
+    tasks.done(function(err, tasks){
+        console.dir(tasks);
+        res.render(
+            'tasks.hbs',
+            {tasks: tasks},
+            function(err, html) {
+                if(err)
+                    throw err;
+                console.log(html);
+                res.render('layout.hbs', {
+                    content: html
+                });
+            }
+        )
+    });
+});
+
+app.post('/todo', function(req, res) {
+    console.dir(tasks);
+    tasks.todo(function(err, tasks){
+        console.dir(tasks);
+        res.render(
+            'tasks.hbs',
+            {tasks: tasks},
+            function(err, html) {
+                if(err)
+                    throw err;
+                console.log(html);
+                res.render('layout.hbs', {
+                    content: html
+                });
+            }
+        )
+    });
+});
+
+app.post('/dellAll', function(req, res) {
+    tasks.dellAll(function(){
+        res.redirect('/');
+    });
+});
+
+app.post('/dellDone', function(req, res) {
+    tasks.dellDone(function(){
+        res.redirect('/');
+    });
+});
+
+
+
 
 app.listen(8080);
 console.log('Server runing on 8080 port');

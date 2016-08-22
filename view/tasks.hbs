@@ -1,6 +1,13 @@
 
 <h2>Список задач</h2>
-<button id="dellAll">Clear All</button> <br><br>
+<div id="filter">
+    <button id="dellDone" onclick="dellDone()">Clear All done</button>
+    <button id="dellAll" onclick="dellAll()">Clear All</button><br><br>
+    <button id="showAll" onclick="showAll()">All</button>
+    <button id="showDone" onclick="showDone()">Show done</button>
+    <button id="showTodo" onclick="showTodo()">In progress</button><br><br>
+</div>
+
 
 <table id="table">
 {{#each tasks}}

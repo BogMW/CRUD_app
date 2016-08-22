@@ -22,6 +22,22 @@ var pool  = mysql.createPool(config);
 
         delete: function(id, callback) {
             pool.query('DELETE FROM tasks WHERE ?', {id: id}, callback);
+        },
+
+        done: function(callback) {
+            pool.query('SELECT * FROM tasks WHERE ?', {status: 'checked'}, callback);
+        },
+
+        todo: function(callback) {
+            pool.query('SELECT * FROM tasks WHERE ?', {status: '0'}, callback);
+        },
+
+        dellAll: function(callback) {
+            pool.query('DELETE FROM tasks', callback);
+        },
+
+        dellDone: function(callback) {
+            pool.query('DELETE FROM tasks WHERE ?', {status: 'checked'}, callback);
         }
     };
 

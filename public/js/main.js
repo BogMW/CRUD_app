@@ -34,3 +34,63 @@ function done(id, status) {
 function edit(id){
    document.getElementsByName(id).removeAttribute('disabled');
 }
+
+function showAll(){
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            document.getElementById("content").innerHTML = xhr.responseText;
+        }
+    };
+    xhr.open("GET", '/');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send();
+}
+
+function showDone(){
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            document.getElementById("content").innerHTML = xhr.responseText;
+        }
+    };
+    xhr.open("POST", '/done');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send();
+}
+
+function showTodo(){
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            document.getElementById("content").innerHTML = xhr.responseText;
+        }
+    };
+    xhr.open("POST", '/todo');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send();
+}
+
+function dellAll(){
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            document.getElementById("content").innerHTML = xhr.responseText;
+        }
+    };
+    xhr.open("POST", '/dellAll');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send();
+}
+
+function dellDone(){
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            document.getElementById("content").innerHTML = xhr.responseText;
+        }
+    };
+    xhr.open("POST", '/dellDone');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send();
+}

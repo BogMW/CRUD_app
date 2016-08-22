@@ -1,13 +1,38 @@
 table {
     border-collapse: collapse;
+    color: #686461;
+    border: 2px solid #E8E6D1;
 }
 
 td {
-    border: 1px solid black;
-    padding: 5px 15px;
+    padding: 5px 10px;
 }
 
+tr:nth-child(even) {
+    background: white;
+}
+tr:nth-child(odd) {
+    background: #E8E6D1;
+}
 .task-input {
     border:none;
     background: none;
 }
+
+#dellAll, #dellDone {
+    color: red !important;
+}
+
+#filter button {
+    color: grey;
+    font-weight: 700;
+    text-decoration: none;
+    padding: .5em 2em;
+    outline: none;
+    border: 2px solid;
+    border-radius: 1px;
+    transition: 0.2s;
+}
+#filter button:hover { background: rgba(255,255,255,.2); border: 2px solid black;}
+#filter button:active { background: white; }
+
