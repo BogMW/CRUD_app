@@ -1,0 +1,14 @@
+
+<h2>Список задач</h2>
+<button id="dellAll">Clear All</button> <br><br>
+
+<table id="table">
+{{#each tasks}}
+    <tr>
+        <td><button onclick="del({{id}})">x</button></td>
+        <td><button onclick="edit({{id}})">✎</button></td>
+        <td><input type="checkbox" {{status}} onchange="done({{id}},'{{status}}')"></td>
+        <td><input class="task-input" disabled type="text" size="50" value="{{task}}" name="{{id}}"></td>
+    </tr>
+    {{/each}}
+</table>

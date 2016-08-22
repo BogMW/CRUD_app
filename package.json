@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "body-parser": "1.x",
+    "cheerio": "0.x",
+    "consolidate": "0.x",
+    "cookie-parser": "^1.4.3",
+    "express": "4.x",
+    "handlebars": "2.x",
+    "mysql": "^2.11.1",
+    "request": "2.x"
+  }
+}

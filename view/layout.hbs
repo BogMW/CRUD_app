@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/style.css" rel="stylesheet">
+    <title>My ToDo list</title>
+
+</head>
+<body>
+    <div id="content">
+        <h1>TODO Manager</h1>
+        <form method="post">
+            Task: <input type="text" name="task">
+            <input type="submit" value="Add">
+        </form>
+
+            {{{content}}}
+
+        <h2>Add task</h2>
+            {{#if error}}<h2>{{error}}</h2>{{/if}}
+
+        &copy; BogMW
+    </div>
+</body>
+<script src="js/main.js"></script>
+</html>
