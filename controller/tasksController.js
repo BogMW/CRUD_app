@@ -4,89 +4,81 @@
 module.exports = function(tasks){
     return {
         index: function(req, res) {
-            tasks.list(function(err, tasks){
-                console.dir(tasks);
+            tasks.list(req.user.name, function(err, tasks){
                 res.render(
                     'tasks.hbs',
                     {tasks: tasks},
                     function(err, html) {
                         if(err)
                             throw err;
-                        console.log(html);
                         res.render('layout.hbs', {
-                            content: html
+                            content: html,
+                            user: req.user.name
                         });
                     }
                 )
             });
         },
         add: function(req, res) {
-            tasks.add(req.body.task, function(){
-                res.redirect('/');
+            tasks.add(req.body.task, req.user.name, function(){
+                res.redirect('/todo');
             });
         },
-        dellId: function(req, res) {
-            console.dir(req.params.id);
+        delId: function(req, res) {
             tasks.delete(req.params.id, function(){
-                res.redirect('/');
+                res.redirect('/todo');
             });
         },
         complete: function(req, res) {
-            console.dir(req.params.id);
             tasks.complete(req.params.id, req.params.status, function(){
-                res.redirect('/');
+                res.redirect('/todo');
             });
         },
         change: function(req, res) {
-            console.dir(req.params.id);
             tasks.change(req.params.id, req.params.text, function(){
-                res.redirect('/');
+                res.redirect('/todo');
             });
         },
         filterDone: function(req, res) {
-            console.dir(tasks);
-            tasks.done(function(err, tasks){
-                console.dir(tasks);
+            tasks.done(req.user.name, function(err, tasks){
                 res.render(
                     'tasks.hbs',
                     {tasks: tasks},
                     function(err, html) {
                         if(err)
                             throw err;
-                        console.log(html);
                         res.render('layout.hbs', {
-                            content: html
+                            content: html,
+                            user: req.user.name
                         });
                     }
                 )
             });
         },
         filterTodo: function(req, res) {
-            console.dir(tasks);
-            tasks.todo(function(err, tasks){
-                console.dir(tasks);
+            tasks.todo(req.user.name, function(err, tasks){
                 res.render(
                     'tasks.hbs',
                     {tasks: tasks},
                     function(err, html) {
                         if(err)
                             throw err;
-                        console.log(html);
                         res.render('layout.hbs', {
-                            content: html
+                            content: html,
+                            user: req.user.name
                         });
                     }
                 )
             });
         },
-        dellAll: function(req, res) {
-            tasks.dellAll(function(){
-                res.redirect('/');
+        delAll: function(req, res) {
+            tasks.delAll(function(){
+                res.redirect('/todo');
             });
         },
-        dellDone: function(req, res) {
-            tasks.dellDone(function(){
-                res.redirect('/');
+        delDone: function(req, res) {
+            tasks.delDone(function(){
+                res.redirect('/todo');
             });
         }
     }

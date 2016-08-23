@@ -42,7 +42,7 @@ function showAll(){
             document.getElementById("content").innerHTML = xhr.responseText;
         }
     };
-    xhr.open("GET", '/');
+    xhr.open("GET", '/todo');
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.send();
 }

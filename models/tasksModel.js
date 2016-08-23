@@ -1,11 +1,11 @@
 module.exports = function(pool){
     return {
-        list: function(callback) {
-            pool.query('SELECT * FROM tasks', callback);
+        list: function(user, callback) {
+            pool.query('SELECT * FROM tasks WHERE ?',{name: user}, callback);
         },
 
-        add: function(task, callback) {
-            pool.query('INSERT INTO tasks SET ?, ?', [{task: task},{status: 0}], callback);
+        add: function(task, user, callback) {
+            pool.query('INSERT INTO tasks SET ?, ?, ?', [{name: user}, {task: task}, {status: 0}], callback);
         },
 
         complete: function(id, status, callback) {
@@ -20,19 +20,19 @@ module.exports = function(pool){
             pool.query('DELETE FROM tasks WHERE ?', {id: id}, callback);
         },
 
-        done: function(callback) {
-            pool.query('SELECT * FROM tasks WHERE ?', {status: 'checked'}, callback);
+        done: function(user, callback) {
+             pool.query('SELECT * FROM tasks WHERE ? AND ?', [{name: user}, {status: 'checked'}], callback);
         },
 
-        todo: function(callback) {
-            pool.query('SELECT * FROM tasks WHERE ?', {status: '0'}, callback);
+        todo: function(user, callback) {
+            pool.query('SELECT * FROM tasks WHERE ? AND ?', [{name: user}, {status: '0'}], callback);
         },
 
-        dellAll: function(callback) {
+        delAll: function(callback) {
             pool.query('DELETE FROM tasks', callback);
         },
 
-        dellDone: function(callback) {
+        delDone: function(callback) {
             pool.query('DELETE FROM tasks WHERE ?', {status: 'checked'}, callback);
         }
     };

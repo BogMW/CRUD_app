@@ -9,7 +9,8 @@
 <body>
     <div id="content">
         <h1>TODO Manager</h1>
-        <form method="post">
+        <a href="/logout" methods="get">Logout</a> {{user}} <br><br>
+        <form method="post" action="/add">
             Task: <input type="text" name="task">
             <input type="submit" value="Add">
         </form>
