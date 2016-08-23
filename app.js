@@ -95,11 +95,7 @@ app.post('/done', taskController.filterDone);
 app.post('/todo', taskController.filterTodo);
 app.post('/delAll', taskController.delAll);
 app.post('/delDone', taskController.delDone);
-
 app.post('/addUser', userController.add);
-//app.post('/findUser', userController.find);
-
-
 
 app.listen(8080);
 console.log('Server runing on 8080 port');

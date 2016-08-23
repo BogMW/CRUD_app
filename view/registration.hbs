@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Registration form</title>
+	<link rel="stylesheet" href="css/login.css" media="screen" type="text/css" />
+</head>
+<body>
+    <div id="login">
+        <form method="post" action="/addUser">
+            <fieldset class="clearfix">
+                <p><span class="fontawesome-user"></span><input type="text" name="username"  placeholder="New login" required></p>
+                <p><span class="fontawesome-lock"></span><input type="password" name="password" placeholder="New password" required></p>
+                <p><input type="submit" value="Registration"></p>
+            </fieldset>
+        </form>
+        <p>Back to login? &nbsp;&nbsp;<a href="/login">Login</a><span class="fontawesome-arrow-right"></span></p>
+    </div>
+</body>
+</html>
